@@ -26,11 +26,12 @@ import { FilterChips } from '../ui/FilterChips'
 interface KanbanBoardProps {
   initialJobs: Job[]
   userEmail: string
+  userId: string
 }
 
 type FilterValue = 'all' | 'active' | 'offers'
 
-export function KanbanBoard({ initialJobs, userEmail }: KanbanBoardProps) {
+export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps) {
   const supabase = createClient()
 
   const [jobs, setJobs] = useState<Job[]>(initialJobs)
@@ -98,7 +99,7 @@ export function KanbanBoard({ initialJobs, userEmail }: KanbanBoardProps) {
 
       const { data: inserted, error } = await supabase
         .from('jobs')
-        .insert({ ...data, position })
+        .insert({ ...data, position, user_id: userId })
         .select()
         .single()
 

@@ -22,6 +22,7 @@ export default async function BoardPage() {
     <KanbanBoard
       initialJobs={(jobs ?? []) as Job[]}
       userEmail={user.email ?? ''}
+      userId={user.id}
     />
   )
 }
