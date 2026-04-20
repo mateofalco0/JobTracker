@@ -10,14 +10,13 @@ export function StatsBar({ jobs }: StatsBarProps) {
   const total = jobs.length
   const interviews = jobs.filter(j => j.status === 'interviewing').length
   const offers = jobs.filter(j => j.status === 'offer').length
-  const responded = jobs.filter(j => j.status !== 'applied').length
-  const responseRate = total > 0 ? Math.round((responded / total) * 100) : 0
+  const responseRate = total > 0 ? Math.round(((interviews + offers) / total) * 100) : 0
 
   const stats = [
     { value: total,              label: 'Applications',  bg: '#B8D4F0', text: '#1a3a5c' },
     { value: interviews,         label: 'Interviews',    bg: '#F5C896', text: '#5c3a0a' },
-    { value: `${responseRate}%`, label: 'Response rate', bg: '#A8E6C0', text: '#0a3a1f' },
-    { value: offers,             label: 'Offers',        bg: '#F0B8B8', text: '#5c1a1a' },
+    { value: offers,             label: 'Offers',        bg: '#A8E6C0', text: '#0a3a1f' },
+    { value: `${responseRate}%`, label: 'Response rate', bg: '#F0B8B8', text: '#5c1a1a' },
   ]
 
   return (

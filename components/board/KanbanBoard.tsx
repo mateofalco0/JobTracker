@@ -152,7 +152,10 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
     const targetStatus: JobStatus = isOverColumn
       ? (overId as JobStatus)
       : (jobs.find(j => j.id === overId)?.status ?? draggedJob.status)
-    const columnJobs = jobs.filter(j => j.status === targetStatus).sort((a, b) => a.position - b.position)
+    // Explicitly apply targetStatus to the dragged job before computing column order,
+    // guarding against a stale closure from before handleDragOver's setState resolved.
+    const currentJobs = jobs.map(j => j.id === activeId ? { ...j, status: targetStatus } : j)
+    const columnJobs = currentJobs.filter(j => j.status === targetStatus).sort((a, b) => a.position - b.position)
     const oldIndex = columnJobs.findIndex(j => j.id === activeId)
     const newIndex = isOverColumn
       ? columnJobs.length - 1
