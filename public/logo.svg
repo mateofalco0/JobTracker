@@ -1,14 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="90" fill="#3B9EFF"/>
-  <!-- Handle drawn from circle center outward; circle layer covers the inner segment -->
-  <line x1="256" y1="168" x2="376" y2="54" stroke="white" stroke-width="28" stroke-linecap="round"/>
-  <!-- Magnifying glass ring: white outer circle + blue inner lens -->
-  <circle cx="256" cy="168" r="76" fill="white"/>
-  <circle cx="256" cy="168" r="50" fill="#3B9EFF"/>
-  <!-- Neck connecting magnifying glass to shoulders -->
-  <rect x="238" y="244" width="36" height="20" fill="white"/>
-  <!-- Suit body (trapezoid, wider at bottom) -->
-  <polygon points="178,264 334,264 416,436 96,436" fill="white"/>
-  <!-- Collar V cut-out in suit (blue = background color) -->
-  <polygon points="210,264 302,264 256,378" fill="#3B9EFF"/>
+  <defs>
+    <clipPath id="bg">
+      <rect width="512" height="512" rx="90"/>
+    </clipPath>
+  </defs>
+
+  <!-- 4-quadrant pastel background -->
+  <g clip-path="url(#bg)">
+    <rect x="0"   y="0"   width="256" height="256" fill="#C5EDD6"/>
+    <rect x="256" y="0"   width="256" height="256" fill="#FFD4B2"/>
+    <rect x="0"   y="256" width="256" height="256" fill="#B8D4F5"/>
+    <rect x="256" y="256" width="256" height="256" fill="#FFB8CC"/>
+  </g>
+
+  <!-- White center circle -->
+  <circle cx="256" cy="256" r="165" fill="white"/>
+
+  <!-- Clipboard body -->
+  <rect x="186" y="160" width="124" height="152" rx="12" fill="#1C1C1E"/>
+
+  <!-- Clip tab (sits on top-center of body) -->
+  <rect x="228" y="149" width="40" height="24" rx="7" fill="#1C1C1E"/>
+
+  <!-- List lines (varying widths for natural feel) -->
+  <rect x="202" y="198" width="92" height="9" rx="4.5" fill="#D1D1D6"/>
+  <rect x="202" y="219" width="76" height="9" rx="4.5" fill="#D1D1D6"/>
+  <rect x="202" y="240" width="84" height="9" rx="4.5" fill="#D1D1D6"/>
+  <rect x="202" y="261" width="60" height="9" rx="4.5" fill="#D1D1D6"/>
+
+  <!-- Magnifying glass handle (drawn first so circle covers the root) -->
+  <line x1="308" y1="312" x2="350" y2="354" stroke="#1C1C1E" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Magnifying glass ring; white stroke separates it from clipboard -->
+  <circle cx="308" cy="312" r="46" fill="#1C1C1E" stroke="white" stroke-width="6"/>
+
+  <!-- Lens -->
+  <circle cx="308" cy="312" r="30" fill="white"/>
 </svg>
