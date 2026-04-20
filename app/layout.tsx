@@ -1,29 +1,21 @@
 import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-})
 
 export const metadata: Metadata = {
   title: 'JobTracker',
-  description: 'Track your job applications like a mission.',
+  description: 'Track your job applications.',
   manifest: '/manifest.json',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#070b14',
+  themeColor: '#000000',
+  width: 'device-width',
+  initialScale: 1,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   )

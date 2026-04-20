@@ -4,9 +4,9 @@ export interface Job {
   company: string
   role: string
   status: JobStatus
-  date_applied: string   // ISO date string: "2025-04-17"
-  notes: string | null   // null means the user left it blank
-  position: number       // order within the column
+  date_applied: string
+  notes: string | null
+  position: number
   created_at: string
 }
 
@@ -15,16 +15,15 @@ export type JobStatus = 'applied' | 'interviewing' | 'offer' | 'rejected'
 export interface Column {
   id: JobStatus
   label: string
-  accentColor: string
-  borderColor: string
+  color: string
+  textColor: string
 }
 
 export const COLUMNS: Column[] = [
-  { id: 'applied',      label: 'APPLIED',      accentColor: 'text-cyan-400',    borderColor: '#38bdf8' },
-  { id: 'interviewing', label: 'INTERVIEWING',  accentColor: 'text-violet-400',  borderColor: '#a78bfa' },
-  { id: 'offer',        label: 'OFFER',         accentColor: 'text-emerald-400', borderColor: '#34d399' },
-  { id: 'rejected',     label: 'REJECTED',      accentColor: 'text-slate-500',   borderColor: 'transparent' },
+  { id: 'applied',      label: 'Applied',      color: '#B8D4F0', textColor: '#1a3a5c' },
+  { id: 'interviewing', label: 'Interviewing',  color: '#F5C896', textColor: '#5c3a0a' },
+  { id: 'offer',        label: 'Offer',         color: '#A8E6C0', textColor: '#0a3a1f' },
+  { id: 'rejected',     label: 'Rejected',      color: '#F0B8B8', textColor: '#5c1a1a' },
 ]
 
-// A partial Job used when creating/editing — no id/user_id/created_at yet
 export type JobFormData = Pick<Job, 'company' | 'role' | 'status' | 'date_applied' | 'notes'>

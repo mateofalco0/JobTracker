@@ -8,9 +8,9 @@ interface FilterChipsProps {
 }
 
 const filters: { value: FilterValue; label: string }[] = [
-  { value: 'all', label: 'ALL' },
-  { value: 'active', label: 'ACTIVE' },
-  { value: 'offers', label: 'OFFERS' },
+  { value: 'all', label: 'All' },
+  { value: 'active', label: 'Active' },
+  { value: 'offers', label: 'Offers' },
 ]
 
 export function FilterChips({ value, onChange }: FilterChipsProps) {
@@ -20,11 +20,11 @@ export function FilterChips({ value, onChange }: FilterChipsProps) {
         <button
           key={f.value}
           onClick={() => onChange(f.value)}
-          className="px-3 py-1.5 text-xs tracking-widest rounded transition-colors"
+          className="px-3 py-1.5 text-sm font-medium rounded-full active:scale-95 transition-all"
           style={
             value === f.value
-              ? { background: 'rgba(56,189,248,0.15)', border: '1px solid #38bdf8', color: '#38bdf8' }
-              : { background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.15)', color: '#64748b' }
+              ? { background: '#3B9EFF', color: '#FFFFFF', minHeight: '32px' }
+              : { background: '#1C1C1E', color: '#8E8E93', minHeight: '32px' }
           }
         >
           {f.label}

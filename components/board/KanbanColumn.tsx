@@ -18,74 +18,68 @@ export function KanbanColumn({ column, jobs, onAdd, onEdit, onDelete }: KanbanCo
   const { setNodeRef, isOver } = useDroppable({ id: column.id })
 
   return (
-    <div className="flex flex-col min-h-full">
-      <div
-        className="flex items-center justify-between pb-3 mb-3"
-        style={{
-          borderBottom: `1px solid ${isOver ? column.borderColor + '60' : column.borderColor + '30'}`,
-          transition: 'border-color 0.15s',
-        }}
-      >
+    <div className="flex flex-col">
+      {/* Column header */}
+      <div className="flex items-center justify-between mb-3 px-1">
+        <div className="flex items-center gap-2">
+          <span
+            className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0"
+            style={{ background: column.color }}
+          />
+          <span className="text-sm font-semibold text-white">{column.label}</span>
+        </div>
         <span
-          className="text-xs font-bold tracking-widest"
-          style={{ color: column.borderColor === 'transparent' ? '#475569' : column.borderColor }}
-        >
-          {column.label}
-        </span>
-        <span
-          className="text-xs font-bold w-5 h-5 flex items-center justify-center rounded"
-          style={{
-            background: column.borderColor === 'transparent'
-              ? 'rgba(100,116,139,0.1)'
-              : `${column.borderColor}18`,
-            color: column.borderColor === 'transparent' ? '#475569' : column.borderColor,
-          }}
+          className="text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
+          style={{ background: '#2C2C2E', color: '#8E8E93' }}
         >
           {jobs.length}
         </span>
       </div>
 
+      {/* Drop zone */}
       <div
         ref={setNodeRef}
-        className="flex flex-col gap-2.5 flex-1 min-h-16 rounded-lg transition-colors"
+        className="flex flex-col gap-2.5 flex-1 rounded-2xl transition-colors"
         style={{
-          background: isOver ? 'rgba(56,189,248,0.03)' : 'transparent',
-          padding: isOver ? '6px' : '0',
+          minHeight: '80px',
+          background: isOver ? 'rgba(255,255,255,0.04)' : 'transparent',
+          padding: isOver ? '8px' : '0',
         }}
       >
-        <SortableContext
-          items={jobs.map(j => j.id)}
-          strategy={verticalListSortingStrategy}
-        >
-          {jobs.map(job => (
-            <SortableJobCard
-              key={job.id}
-              job={job}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
-          ))}
+        <SortableContext items={jobs.map(j => j.id)} strategy={verticalListSortingStrategy}>
+          {jobs.length === 0 && !isOver ? (
+            <div
+              className="flex flex-col items-center justify-center gap-2 rounded-2xl py-10"
+              style={{ background: '#111111' }}
+            >
+              <span className="text-2xl">📭</span>
+              <span className="text-xs" style={{ color: '#636366' }}>Nothing here yet</span>
+            </div>
+          ) : (
+            jobs.map(job => (
+              <SortableJobCard
+                key={job.id}
+                job={job}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
+            ))
+          )}
         </SortableContext>
       </div>
 
+      {/* Add button */}
       <button
         onClick={onAdd}
-        className="mt-3 flex items-center justify-center gap-2 py-3 text-xs tracking-widest rounded-lg transition-colors"
+        className="mt-3 flex items-center justify-center gap-2 py-3 rounded-2xl text-sm font-medium active:scale-95 transition-all"
         style={{
-          border: '1px dashed rgba(56,189,248,0.12)',
-          color: '#334155',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.borderColor = 'rgba(56,189,248,0.3)'
-          e.currentTarget.style.color = '#38bdf8'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.borderColor = 'rgba(56,189,248,0.12)'
-          e.currentTarget.style.color = '#334155'
+          background: '#1C1C1E',
+          color: '#8E8E93',
+          minHeight: '44px',
         }}
       >
-        <Plus size={12} />
-        ADD
+        <Plus size={14} />
+        Add
       </button>
     </div>
   )

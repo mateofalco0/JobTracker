@@ -4,8 +4,8 @@
   "description": "Track your job applications like a mission.",
   "start_url": "/board",
   "display": "standalone",
-  "background_color": "#070b14",
-  "theme_color": "#070b14",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "icons": [
     {

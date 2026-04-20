@@ -1,0 +1,182 @@
+<h2>Design Direction</h2>
+<p class="subtitle">Your JobTracker needs a bold, portfolio-worthy aesthetic. Pick the direction that speaks to you — we'll refine from here.</p>
+
+<div class="cards">
+
+  <!-- Option A: Dark Command Center -->
+  <div class="card" data-choice="dark-command" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0e1a;padding:16px;font-family:monospace;min-height:180px;border-bottom:1px solid #1e2a4a;position:relative;overflow:hidden;">
+      <!-- grid lines -->
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.04) 1px,transparent 1px);background-size:20px 20px;"></div>
+      <!-- nav -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;position:relative;">
+        <span style="color:#38bdf8;font-size:11px;letter-spacing:0.2em;font-weight:700;">JOBTRACKER_</span>
+        <span style="color:#38bdf8;font-size:9px;opacity:0.6;">● LIVE</span>
+      </div>
+      <!-- stats strip -->
+      <div style="display:flex;gap:8px;margin-bottom:12px;position:relative;">
+        <div style="flex:1;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:4px;padding:6px 8px;text-align:center;">
+          <div style="color:#38bdf8;font-size:16px;font-weight:700;">24</div>
+          <div style="color:#64748b;font-size:8px;letter-spacing:0.1em;">APPLIED</div>
+        </div>
+        <div style="flex:1;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:4px;padding:6px 8px;text-align:center;">
+          <div style="color:#a78bfa;font-size:16px;font-weight:700;">6</div>
+          <div style="color:#64748b;font-size:8px;letter-spacing:0.1em;">ACTIVE</div>
+        </div>
+        <div style="flex:1;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:4px;padding:6px 8px;text-align:center;">
+          <div style="color:#34d399;font-size:16px;font-weight:700;">2</div>
+          <div style="color:#64748b;font-size:8px;letter-spacing:0.1em;">OFFERS</div>
+        </div>
+      </div>
+      <!-- kanban columns -->
+      <div style="display:flex;gap:6px;position:relative;">
+        <div style="flex:1;background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:4px;padding:5px;">
+          <div style="color:#38bdf8;font-size:8px;letter-spacing:0.15em;margin-bottom:6px;">APPLIED</div>
+          <div style="background:#0f172a;border:1px solid #1e2a4a;border-radius:3px;padding:5px;margin-bottom:4px;">
+            <div style="color:#e2e8f0;font-size:9px;font-weight:600;">Stripe</div>
+            <div style="color:#64748b;font-size:8px;">SWE Intern</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e2a4a;border-radius:3px;padding:5px;">
+            <div style="color:#e2e8f0;font-size:9px;font-weight:600;">Vercel</div>
+            <div style="color:#64748b;font-size:8px;">Frontend Dev</div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:4px;padding:5px;">
+          <div style="color:#a78bfa;font-size:8px;letter-spacing:0.15em;margin-bottom:6px;">INTERVIEWS</div>
+          <div style="background:#0f172a;border:1px solid rgba(167,139,250,0.2);border-radius:3px;padding:5px;">
+            <div style="color:#e2e8f0;font-size:9px;font-weight:600;">Linear</div>
+            <div style="color:#64748b;font-size:8px;">Full Stack</div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:4px;padding:5px;">
+          <div style="color:#34d399;font-size:8px;letter-spacing:0.15em;margin-bottom:6px;">OFFERS</div>
+          <div style="background:#0f172a;border:1px solid rgba(52,211,153,0.25);border-left:2px solid #34d399;border-radius:3px;padding:5px;">
+            <div style="color:#e2e8f0;font-size:9px;font-weight:600;">Supabase</div>
+            <div style="color:#64748b;font-size:8px;">DevRel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark Command Center</h3>
+      <p>Deep navy/slate with electric cyan accents and subtle grid lines. Monospace type. Feels like a mission control dashboard — professional and unmistakable.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Editorial Warm -->
+  <div class="card" data-choice="editorial-warm" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#faf7f2;padding:16px;min-height:180px;border-bottom:1px solid #e8ddd0;font-family:Georgia,serif;">
+      <!-- nav -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:2px solid #1a1209;padding-bottom:8px;">
+        <span style="color:#1a1209;font-size:14px;font-weight:700;letter-spacing:-0.03em;">JobTracker</span>
+        <span style="background:#c0392b;color:white;font-size:8px;font-family:monospace;padding:2px 8px;letter-spacing:0.1em;">NEW APPLICATION +</span>
+      </div>
+      <!-- stats strip -->
+      <div style="display:flex;gap:12px;margin-bottom:12px;">
+        <div style="border-left:3px solid #c0392b;padding-left:8px;">
+          <div style="color:#1a1209;font-size:18px;font-weight:700;font-family:Georgia,serif;line-height:1;">24</div>
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.05em;">applications</div>
+        </div>
+        <div style="border-left:3px solid #f39c12;padding-left:8px;">
+          <div style="color:#1a1209;font-size:18px;font-weight:700;font-family:Georgia,serif;line-height:1;">6</div>
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.05em;">interviewing</div>
+        </div>
+        <div style="border-left:3px solid #27ae60;padding-left:8px;">
+          <div style="color:#1a1209;font-size:18px;font-weight:700;font-family:Georgia,serif;line-height:1;">2</div>
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.05em;">offers</div>
+        </div>
+      </div>
+      <!-- kanban columns -->
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;">
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.1em;border-bottom:1px solid #e8ddd0;margin-bottom:6px;padding-bottom:4px;">APPLIED</div>
+          <div style="background:white;border:1px solid #e8ddd0;border-radius:2px;padding:6px;margin-bottom:4px;box-shadow:1px 1px 0 #e8ddd0;">
+            <div style="color:#1a1209;font-size:9px;font-weight:700;">Stripe</div>
+            <div style="color:#8b7355;font-size:8px;font-family:monospace;">SWE Intern</div>
+          </div>
+          <div style="background:white;border:1px solid #e8ddd0;border-radius:2px;padding:6px;box-shadow:1px 1px 0 #e8ddd0;">
+            <div style="color:#1a1209;font-size:9px;font-weight:700;">Vercel</div>
+            <div style="color:#8b7355;font-size:8px;font-family:monospace;">Frontend Dev</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.1em;border-bottom:1px solid #e8ddd0;margin-bottom:6px;padding-bottom:4px;">INTERVIEWING</div>
+          <div style="background:white;border:1px solid #e8ddd0;border-left:3px solid #f39c12;border-radius:2px;padding:6px;box-shadow:1px 1px 0 #e8ddd0;">
+            <div style="color:#1a1209;font-size:9px;font-weight:700;">Linear</div>
+            <div style="color:#8b7355;font-size:8px;font-family:monospace;">Full Stack</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="color:#8b7355;font-size:8px;font-family:monospace;letter-spacing:0.1em;border-bottom:2px solid #27ae60;margin-bottom:6px;padding-bottom:4px;">OFFERS</div>
+          <div style="background:white;border:1px solid #e8ddd0;border-left:3px solid #27ae60;border-radius:2px;padding:6px;box-shadow:1px 1px 0 #e8ddd0;">
+            <div style="color:#1a1209;font-size:9px;font-weight:700;">Supabase</div>
+            <div style="color:#8b7355;font-size:8px;font-family:monospace;">DevRel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Editorial Warm</h3>
+      <p>Cream paper background, bold serif headings, monospace data labels, crimson accents. Feels like a refined newspaper — elegant, readable, and unlike anything else in your portfolio.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Flat Brutalist -->
+  <div class="card" data-choice="flat-brutalist" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f0f0eb;padding:16px;min-height:180px;border-bottom:2px solid #111;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+      <!-- nav -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <span style="color:#111;font-size:13px;font-weight:900;letter-spacing:-0.05em;text-transform:uppercase;">JOB TRACKER</span>
+        <button style="background:#ff3d00;color:white;font-size:9px;font-weight:900;padding:4px 10px;border:2px solid #111;border-radius:0;cursor:pointer;letter-spacing:0.05em;">+ ADD</button>
+      </div>
+      <!-- stats strip -->
+      <div style="display:flex;gap:6px;margin-bottom:12px;">
+        <div style="flex:1;background:#ff3d00;border:2px solid #111;padding:6px;text-align:center;">
+          <div style="color:white;font-size:16px;font-weight:900;line-height:1;">24</div>
+          <div style="color:rgba(255,255,255,0.8);font-size:7px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Total</div>
+        </div>
+        <div style="flex:1;background:#ffd600;border:2px solid #111;padding:6px;text-align:center;">
+          <div style="color:#111;font-size:16px;font-weight:900;line-height:1;">6</div>
+          <div style="color:#111;font-size:7px;font-weight:700;letter-spacing:0.1em;opacity:0.7;text-transform:uppercase;">Active</div>
+        </div>
+        <div style="flex:1;background:#00e676;border:2px solid #111;padding:6px;text-align:center;">
+          <div style="color:#111;font-size:16px;font-weight:900;line-height:1;">2</div>
+          <div style="color:#111;font-size:7px;font-weight:700;letter-spacing:0.1em;opacity:0.7;text-transform:uppercase;">Offers</div>
+        </div>
+      </div>
+      <!-- kanban columns -->
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;">
+          <div style="background:#111;color:#f0f0eb;font-size:8px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:4px 6px;margin-bottom:4px;">APPLIED</div>
+          <div style="background:white;border:2px solid #111;padding:5px;margin-bottom:3px;box-shadow:2px 2px 0 #111;">
+            <div style="color:#111;font-size:9px;font-weight:900;">STRIPE</div>
+            <div style="color:#555;font-size:8px;">SWE Intern</div>
+          </div>
+          <div style="background:white;border:2px solid #111;padding:5px;box-shadow:2px 2px 0 #111;">
+            <div style="color:#111;font-size:9px;font-weight:900;">VERCEL</div>
+            <div style="color:#555;font-size:8px;">Frontend Dev</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="background:#ffd600;color:#111;font-size:8px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:4px 6px;border:2px solid #111;margin-bottom:4px;">INTERVIEWING</div>
+          <div style="background:white;border:2px solid #111;padding:5px;box-shadow:2px 2px 0 #111;">
+            <div style="color:#111;font-size:9px;font-weight:900;">LINEAR</div>
+            <div style="color:#555;font-size:8px;">Full Stack</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="background:#00e676;color:#111;font-size:8px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:4px 6px;border:2px solid #111;margin-bottom:4px;">OFFERS</div>
+          <div style="background:white;border:2px solid #111;padding:5px;box-shadow:2px 2px 0 #111;">
+            <div style="color:#111;font-size:9px;font-weight:900;">SUPABASE</div>
+            <div style="color:#555;font-size:8px;">DevRel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Flat Brutalist</h3>
+      <p>Off-white canvas, thick black borders, bold offset shadows, high-contrast accent blocks (red, yellow, green). Maximum personality — raw, unapologetic, and impossible to ignore.</p>
+    </div>
+  </div>
+
+</div>
