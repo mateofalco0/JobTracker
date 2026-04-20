@@ -43,12 +43,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex flex-col items-center mb-10">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 text-xl font-bold"
-            style={{ background: '#3B9EFF', color: '#000' }}
-          >
-            JT
-          </div>
+          <img src="/logo.svg" alt="JobTracker" className="w-16 h-16 mb-4" />
           <h1 className="text-3xl font-bold text-white">Welcome back</h1>
           <p className="text-sm mt-1" style={{ color: '#8E8E93' }}>Sign in to your account</p>
         </div>

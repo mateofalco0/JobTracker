@@ -181,12 +181,7 @@ export function KanbanBoard({ initialJobs, userEmail }: KanbanBoardProps) {
         {/* Top row: logo + sign out */}
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center gap-2.5">
-            <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0"
-              style={{ background: '#3B9EFF', color: '#000' }}
-            >
-              JT
-            </div>
+            <img src="/logo.svg" alt="JobTracker" className="w-8 h-8 flex-shrink-0" />
             <span className="text-base font-bold text-white">Job Tracker</span>
           </div>
 

@@ -49,11 +49,10 @@ export function KanbanColumn({ column, jobs, onAdd, onEdit, onDelete }: KanbanCo
         <SortableContext items={jobs.map(j => j.id)} strategy={verticalListSortingStrategy}>
           {jobs.length === 0 && !isOver ? (
             <div
-              className="flex flex-col items-center justify-center gap-2 rounded-2xl py-10"
+              className="flex items-center justify-center rounded-2xl py-10"
               style={{ background: '#111111' }}
             >
-              <span className="text-2xl">📭</span>
-              <span className="text-xs" style={{ color: '#636366' }}>Nothing here yet</span>
+              <span className="text-sm" style={{ color: '#636366' }}>Nothing here yet</span>
             </div>
           ) : (
             jobs.map(job => (
