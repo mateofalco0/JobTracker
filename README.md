@@ -1,6 +1,6 @@
 # JobTracker
 
-A Progressive Web App for tracking job applications through a kanban board. Built with Next.js 16, Tailwind CSS v4, and Supabase. Installable on mobile. Dark Command Center aesthetic.
+A Progressive Web App for tracking job applications through a kanban board. Built with Next.js 16, Tailwind CSS v4, and Supabase. Installable on mobile.
 
 ---
 
