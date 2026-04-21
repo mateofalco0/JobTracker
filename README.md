@@ -1,12 +1,5 @@
 # JobTracker
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com)
-[![Gemini](https://img.shields.io/badge/Google-Gemini_2.5_Flash-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev)
-
 I built this because I was applying to jobs and tracking everything in a spreadsheet, which quickly became a mess. I wanted something visual that shows the full picture at a glance — where each application stands, how many interviews I have active, what my response rate looks like. I also wanted AI built into the workflow, not bolted on as an afterthought. The result is a Kanban board for job searching with four Gemini-powered features that cover the most time-consuming parts: filling in application details, preparing for interviews, and making sense of the search as a whole.
 
 **Live demo: [job-tracker-mf.vercel.app](https://job-tracker-mf.vercel.app)**
