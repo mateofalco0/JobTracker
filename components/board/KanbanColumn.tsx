@@ -12,9 +12,11 @@ interface KanbanColumnProps {
   onAdd: () => void
   onEdit: (job: Job) => void
   onDelete: (id: string) => void
+  onAITips?: (job: Job) => void
+  onInterviewPrep?: (job: Job) => void
 }
 
-export function KanbanColumn({ column, jobs, onAdd, onEdit, onDelete }: KanbanColumnProps) {
+export function KanbanColumn({ column, jobs, onAdd, onEdit, onDelete, onAITips, onInterviewPrep }: KanbanColumnProps) {
   const { setNodeRef, isOver } = useDroppable({ id: column.id })
 
   return (
@@ -61,6 +63,8 @@ export function KanbanColumn({ column, jobs, onAdd, onEdit, onDelete }: KanbanCo
                 job={job}
                 onEdit={onEdit}
                 onDelete={onDelete}
+                onAITips={onAITips}
+                onInterviewPrep={onInterviewPrep}
               />
             ))
           )}

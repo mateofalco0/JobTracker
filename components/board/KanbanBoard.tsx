@@ -13,12 +13,15 @@ import {
   closestCorners,
 } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
-import { Plus, LogOut } from 'lucide-react'
+import { Plus, LogOut, BarChart2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Job, JobFormData, JobStatus, COLUMNS } from '@/lib/types'
 import { KanbanColumn } from './KanbanColumn'
 import { JobCard } from './JobCard'
 import { JobModal } from '../modals/JobModal'
+import { AITipsModal } from '../modals/AITipsModal'
+import { InterviewPrepModal } from '../modals/InterviewPrepModal'
+import { AISummaryModal } from '../modals/AISummaryModal'
 import { StatsBar } from '../stats/StatsBar'
 import { SearchBar } from '../ui/SearchBar'
 import { FilterChips } from '../ui/FilterChips'
@@ -41,6 +44,9 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
   const [searchQuery, setSearchQuery] = useState('')
   const [filter, setFilter] = useState<FilterValue>('all')
   const [activeJob, setActiveJob] = useState<Job | null>(null)
+  const [aiTipsJob, setAITipsJob] = useState<Job | null>(null)
+  const [interviewPrepJob, setInterviewPrepJob] = useState<Job | null>(null)
+  const [summaryOpen, setSummaryOpen] = useState(false)
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
@@ -190,6 +196,16 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
           </div>
 
           <div className="flex items-center gap-2">
+            {/* AI Summary button */}
+            <button
+              onClick={() => setSummaryOpen(true)}
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold active:scale-95 transition-transform"
+              style={{ background: '#1C1C1E', color: '#A8E6C0', minHeight: '40px' }}
+              title="AI Summary"
+            >
+              <BarChart2 size={14} />
+              AI Summary
+            </button>
             {/* Desktop: add button in header */}
             <button
               onClick={() => openAddModal('applied')}
@@ -238,6 +254,8 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
               onAdd={() => openAddModal(column.id)}
               onEdit={openEditModal}
               onDelete={handleDelete}
+              onAITips={setAITipsJob}
+              onInterviewPrep={setInterviewPrepJob}
             />
           ))}
         </div>
@@ -254,8 +272,15 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
         </DragOverlay>
       </DndContext>
 
-      {/* ── Mobile FAB ── */}
-      <div className="fixed bottom-6 right-5 md:hidden z-20">
+      {/* ── Mobile FAB row ── */}
+      <div className="fixed bottom-6 right-5 md:hidden z-20 flex items-center gap-3">
+        <button
+          onClick={() => setSummaryOpen(true)}
+          className="flex items-center gap-2 px-4 py-4 rounded-full text-sm font-semibold shadow-lg active:scale-95 transition-transform"
+          style={{ background: '#1C1C1E', color: '#A8E6C0', minHeight: '54px', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+        >
+          <BarChart2 size={16} />
+        </button>
         <button
           onClick={() => openAddModal('applied')}
           className="flex items-center gap-2 px-5 py-4 rounded-full text-base font-semibold text-white shadow-lg active:scale-95 transition-transform"
@@ -266,13 +291,28 @@ export function KanbanBoard({ initialJobs, userEmail, userId }: KanbanBoardProps
         </button>
       </div>
 
-      {/* ── Modal ── */}
+      {/* ── Modals ── */}
       <JobModal
         open={modalOpen}
         job={editingJob}
         defaultStatus={defaultStatus}
         onSave={handleSave}
         onClose={() => setModalOpen(false)}
+      />
+      <AITipsModal
+        open={aiTipsJob !== null}
+        job={aiTipsJob}
+        onClose={() => setAITipsJob(null)}
+      />
+      <InterviewPrepModal
+        open={interviewPrepJob !== null}
+        job={interviewPrepJob}
+        onClose={() => setInterviewPrepJob(null)}
+      />
+      <AISummaryModal
+        open={summaryOpen}
+        jobs={jobs}
+        onClose={() => setSummaryOpen(false)}
       />
     </div>
   )

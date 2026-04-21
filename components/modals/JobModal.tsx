@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { X } from 'lucide-react'
+import { X, Sparkles } from 'lucide-react'
 import { Job, JobFormData, JobStatus, COLUMNS } from '@/lib/types'
+import { ParseJobModal } from './ParseJobModal'
 
 interface JobModalProps {
   open: boolean
@@ -35,6 +36,7 @@ export function JobModal({ open, job, defaultStatus, onSave, onClose }: JobModal
   const [form, setForm] = useState<JobFormData>(emptyForm())
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [parseOpen, setParseOpen] = useState(false)
 
   useEffect(() => {
     if (job) {
@@ -52,6 +54,10 @@ export function JobModal({ open, job, defaultStatus, onSave, onClose }: JobModal
   }, [job, defaultStatus, open])
 
   if (!open) return null
+
+  function handleFill(company: string, role: string, notes: string) {
+    setForm(prev => ({ ...prev, company, role, notes: notes || prev.notes }))
+  }
 
   function set<K extends keyof JobFormData>(key: K, value: JobFormData[K]) {
     setForm(prev => ({ ...prev, [key]: value }))
@@ -76,9 +82,11 @@ export function JobModal({ open, job, defaultStatus, onSave, onClose }: JobModal
   }
 
   return (
-    /* Backdrop */
+    <>
+    <ParseJobModal open={parseOpen} onClose={() => setParseOpen(false)} onFill={handleFill} />
+    {/* Backdrop */}
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+      className="fixed inset-0 z-40 flex items-end sm:items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
@@ -97,13 +105,26 @@ export function JobModal({ open, job, defaultStatus, onSave, onClose }: JobModal
           <h2 className="text-lg font-bold text-white">
             {job ? 'Edit application' : 'New application'}
           </h2>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full active:scale-95 transition-transform"
-            style={{ background: '#2C2C2E', color: '#8E8E93' }}
-          >
-            <X size={14} />
-          </button>
+          <div className="flex items-center gap-2">
+            {!job && (
+              <button
+                type="button"
+                onClick={() => setParseOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold active:scale-95 transition-transform"
+                style={{ background: '#2C2C2E', color: '#3B9EFF' }}
+              >
+                <Sparkles size={11} />
+                Paste job description
+              </button>
+            )}
+            <button
+              onClick={onClose}
+              className="w-8 h-8 flex items-center justify-center rounded-full active:scale-95 transition-transform"
+              style={{ background: '#2C2C2E', color: '#8E8E93' }}
+            >
+              <X size={14} />
+            </button>
+          </div>
         </div>
 
         {/* Error */}
@@ -178,5 +199,6 @@ export function JobModal({ open, job, defaultStatus, onSave, onClose }: JobModal
         </form>
       </div>
     </div>
+    </>
   )
 }

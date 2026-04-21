@@ -9,9 +9,11 @@ interface SortableJobCardProps {
   job: Job
   onEdit: (job: Job) => void
   onDelete: (id: string) => void
+  onAITips?: (job: Job) => void
+  onInterviewPrep?: (job: Job) => void
 }
 
-export function SortableJobCard({ job, onEdit, onDelete }: SortableJobCardProps) {
+export function SortableJobCard({ job, onEdit, onDelete, onAITips, onInterviewPrep }: SortableJobCardProps) {
   const {
     attributes,
     listeners,
@@ -33,6 +35,8 @@ export function SortableJobCard({ job, onEdit, onDelete }: SortableJobCardProps)
       job={job}
       onEdit={onEdit}
       onDelete={onDelete}
+      onAITips={onAITips}
+      onInterviewPrep={onInterviewPrep}
       isDragging={false}
       style={style}
       {...attributes}

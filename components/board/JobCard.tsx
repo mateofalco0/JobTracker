@@ -1,18 +1,20 @@
 'use client'
 
 import { forwardRef, useState } from 'react'
-import { Pencil, Trash2 } from 'lucide-react'
+import { Pencil, Trash2, Lightbulb, MessageSquare } from 'lucide-react'
 import { Job, COLUMNS } from '@/lib/types'
 
 interface JobCardProps extends React.HTMLAttributes<HTMLDivElement> {
   job: Job
   onEdit: (job: Job) => void
   onDelete: (id: string) => void
+  onAITips?: (job: Job) => void
+  onInterviewPrep?: (job: Job) => void
   isDragging?: boolean
 }
 
 export const JobCard = forwardRef<HTMLDivElement, JobCardProps>(
-  ({ job, onEdit, onDelete, isDragging, style, ...props }, ref) => {
+  ({ job, onEdit, onDelete, onAITips, onInterviewPrep, isDragging, style, ...props }, ref) => {
     const [showActions, setShowActions] = useState(false)
 
     const column = COLUMNS.find(c => c.id === job.status)
@@ -57,10 +59,31 @@ export const JobCard = forwardRef<HTMLDivElement, JobCardProps>(
             className="flex gap-1.5 transition-opacity"
             style={{ opacity: showActions ? 1 : 0 }}
           >
+            {onAITips && (
+              <button
+                onClick={e => { e.stopPropagation(); onAITips(job) }}
+                className="w-7 h-7 flex items-center justify-center rounded-full active:scale-95 transition-transform"
+                style={{ background: '#2C2C2E', color: '#FFD60A', minWidth: '28px', minHeight: '28px' }}
+                title="AI Tips"
+              >
+                <Lightbulb size={11} />
+              </button>
+            )}
+            {onInterviewPrep && job.status === 'interviewing' && (
+              <button
+                onClick={e => { e.stopPropagation(); onInterviewPrep(job) }}
+                className="w-7 h-7 flex items-center justify-center rounded-full active:scale-95 transition-transform"
+                style={{ background: '#2C2C2E', color: '#F5C896', minWidth: '28px', minHeight: '28px' }}
+                title="Prep Interview"
+              >
+                <MessageSquare size={11} />
+              </button>
+            )}
             <button
               onClick={e => { e.stopPropagation(); onEdit(job) }}
               className="w-7 h-7 flex items-center justify-center rounded-full active:scale-95 transition-transform"
               style={{ background: '#2C2C2E', color: '#8E8E93', minWidth: '28px', minHeight: '28px' }}
+              title="Edit"
             >
               <Pencil size={11} />
             </button>
@@ -68,6 +91,7 @@ export const JobCard = forwardRef<HTMLDivElement, JobCardProps>(
               onClick={e => { e.stopPropagation(); onDelete(job.id) }}
               className="w-7 h-7 flex items-center justify-center rounded-full active:scale-95 transition-transform"
               style={{ background: '#2C2C2E', color: '#FF453A', minWidth: '28px', minHeight: '28px' }}
+              title="Delete"
             >
               <Trash2 size={11} />
             </button>
